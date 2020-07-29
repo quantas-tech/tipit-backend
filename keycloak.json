@@ -1,0 +1,9 @@
+{
+  "realm": "comet",
+  "bearer-only": true,
+  "auth-server-url": "http://localhost:8080/auth/",
+  "ssl-required": "none",
+  "resource": "api-server",
+  "confidential-port": 0,
+  "realm-public-key":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2l3S5ohEVG/PGwB1AkMT48m5qs92voELY+xXtvrkGFtD4OIbDL/X324HS2UDPA75mKbRow/VCFQX0megcACy1qFHKYLA1ZQrB7fN8AYq8fyVvQ8o5b22PHMbk+RUH64G4bpxXhKu6maIbwtxjzKR4fIFlhs1xf1lOeNeeRk/4I0jyKV22R39Ya+8mpVoOtXJikHs5NP6qL+h8BtKKRPZhp/O8zYAQbwwFsvxYCTZ+R1go0murlGr7NE9MpAQtMYpnsWLLUB0ZQBMDyT0ytr1Ggs20Bmq/tawJ/Wsd3em8f6ibs6B+A5E8UK+Wyovi88tpAVaY7/iNKzlhdI7PxrdyQIDAQAB"
+}
