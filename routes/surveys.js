@@ -7,7 +7,6 @@ router.get('/:companyId', async function(req,res){
     res.send(surveys)
 })
 router.get('/:companyId/:id', async function(req,res){
-    console.log(req.params.id)
     let survey = await surveyController.details(req.params.id)
     res.send(survey)
 })
@@ -16,7 +15,6 @@ router.post('/:companyId', async function(req,res){
     res.send(newSurvey)
 })
 router.patch('/:id', async function(req,res){
-    console.log(req.body)
     let newSurvey = await surveyController.update(req.params.id, req.body)
     res.send(newSurvey)
 })
