@@ -2,8 +2,10 @@ const Question = require('../models/Question')
 
 async function create(data){
     let newQuestion = new Question({
-        name:data.name,
-        description:data.description,
+        question:data.question,
+        type:data.type,
+        answers:data.answers,
+        company: data.company
     })
     await newQuestion.save()
     return newQuestion

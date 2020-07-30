@@ -11,7 +11,7 @@ async function create(companyId, data){
 }
 
 async function update(id,data){
-    let newSurvey= await Survey.findByIdAndUpdate(id,{$set:data},{new:true}).exec().catch(err=>{
+    let newSurvey= await Survey.findByIdAndUpdate(id,{$set:data},{new:true}).populate('questions stores').exec().catch(err=>{
         console.log(err)
     })   
     return newSurvey
