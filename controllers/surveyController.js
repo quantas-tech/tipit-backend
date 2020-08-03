@@ -25,7 +25,7 @@ async function index(companyId){
 }
 
 async function details(surveyId){
-    let survey = await Survey.findById(surveyId).populate('questions stores').exec().catch(err=>{
+    let survey = await Survey.findById(surveyId).populate('questions stores company').exec().catch(err=>{
         console.log(err)
     })   
     return survey

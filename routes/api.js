@@ -11,5 +11,6 @@ router.use('/stores', require('./stores'))
 router.use('/surveys', require('./surveys'))
 router.use('/questions', require('./questions'))
 router.use('/results',require('./results'))
+router.use('/public',require('./public'))
 
 module.exports = router

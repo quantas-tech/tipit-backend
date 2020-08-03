@@ -1,24 +1,39 @@
 const Company = require('../models/company')
 const jimp = require('jimp')
+const Vibrant = require('node-vibrant')
+const minioClient = require('../config/minio')
+const fs = require('fs')
 
 async function create(data, imageFile){
     if(imageFile){
         jimp.read(imageFile.path).then(image=>{
             image
                 .cover(128,128)
-                .write(imageFile.path)
-        }).then(async()=>{
-            let newCompany = new Company({
-                admins:[data.userId],
-                name:data.name,
-                address:data.address,
-                picture:'http://localhost:3000/static/images/' + imageFile.filename
-
+                .write(imageFile.path,()=>{
+                    const meta = {
+                        'Content-Type': imageFile.mimetype
+                    }
+                    minioClient.fPutObject(process.env.S3_BUCKET,imageFile.filename,imageFile.path,meta,(err,tag)=>{
+                        if(err){
+                            console.log(err)
+                        }
+                        fs.unlinkSync(imageFile.path)
+                    })
+                })
+        }).then(()=>{
+            Vibrant.from(imageFile.path).getPalette(async(err,palette)=>{
+                let newCompany = new Company({
+                    admins:[data.userId],
+                    name:data.name,
+                    address:data.address,
+                    picture:process.env.S3_BASEURL + imageFile.filename,
+                    colors:[palette.Vibrant.getHex(),palette.LightMuted.getHex()]
+                })
+                await newCompany.save().catch(err=>{
+                    console.log(err)
+                })
+                return newCompany
             })
-            await newCompany.save().catch(err=>{
-                console.log(err)
-            })
-            return newCompany
         }).catch(err=>{
             console.log(err)
         })        

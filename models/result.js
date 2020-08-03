@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const resultSchema = new mongoose.Schema({
-  active:{
+  completed:{
     type:Boolean,
     default:true
   },
@@ -9,25 +9,9 @@ const resultSchema = new mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:"Customer"
   },
-  question:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"Question"
-  },
-  answer:{
-    type:String
-  },
+  answers:[String],
   comment:{
     type:String
-  },
-  stores:[
-    {
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"Store"
-    }
-  ],
-  company:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"Company"
   },
   survey:{
     type:mongoose.Schema.Types.ObjectId,

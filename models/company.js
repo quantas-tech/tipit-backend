@@ -44,6 +44,10 @@ const companySchema = new mongoose.Schema({
     type:Boolean,
     default:true
   },
+  colors:{
+    type: Array,
+    default: ['#EA462B','#ffffff']
+  },
   config:[String]
 },
 {
