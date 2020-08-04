@@ -1,4 +1,4 @@
-const Question = require('../models/Question')
+const Question = require('../models/question')
 
 async function create(data){
     let newQuestion = new Question({
